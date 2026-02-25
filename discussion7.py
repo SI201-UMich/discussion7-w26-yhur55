@@ -64,27 +64,27 @@ def calculate_avg_price_by_neighbourhood_group_and_room(listings):
         e.g. { ('Downtown', 'Entire home/apt'): 123.45, ... }
     """
     
-price_sum = {}
-price_count = {}
-for listing in listings:
-    neighbourhood_group = listing["neighbourhood_group"]
-    room_type = listing["room_type"]
-    price = float(listing["price"])
+    price_sum = {}
+    price_count = {}
+    for listing in listings:
+        neighbourhood_group = listing["neighbourhood_group"]
+        room_type = listing["room_type"]
+        price = float(listing["price"])
 
-    listing_key = (neighbourhood_group, room_type)
+        listing_key = (neighbourhood_group, room_type)
 
-    if listing_key in price_sum:
-        price_sum[listing_key] += price
-        price_count[listing_key] += 1
-    else:
-        price_sum[listing_key] = price
-        price_count[listing_key] = 1
-        
-avg_price = {}
-for key in price_sum:
-    avg_price[key] = price_sum[key] / price_count[key]
+        if listing_key in price_sum:
+            price_sum[listing_key] += price
+            price_count[listing_key] += 1
+        else:
+            price_sum[listing_key] = price
+            price_count[listing_key] = 1
+            
+    avg_price = {}
+    for key in price_sum:
+        avg_price[key] = price_sum[key] / price_count[key]
 
-return avg_price
+    return avg_price
 
 
 
